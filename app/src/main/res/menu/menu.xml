@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <group
+        android:id="@+id/group"
+        android:title="titre" >
+
+        <item
+            android:id="@+id/most_viwed"
+            android:enabled="true"
+            android:icon="@drawable/ic_launcher_foreground"
+            android:title="@string/most_viewed"
+            android:visible="true" />
+
+        <item
+            android:id="@+id/top_stories"
+            android:enabled="true"
+            android:icon="@drawable/ic_launcher_foreground"
+            android:title="@string/top_stories"
+            android:visible="true" />
+
+        <item
+            android:id="@+id/business"
+            android:enabled="true"
+            android:icon="@drawable/ic_launcher_foreground"
+            android:title="@string/business"
+            android:visible="true" />
+    </group>
+
+
+
+</menu>

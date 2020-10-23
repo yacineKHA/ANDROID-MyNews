@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">MyNewsReprog</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
+    <string name="type_1">Type 1</string>
+
+    <string name="most_viewed">Most viewed</string>
+    <string name="top_stories">Top stories</string>
+    <string name="business">Business</string>
+    <string name="search">search</string>
+    <string name="notifications">Notifications</string>
+    <string name="help">Help</string>
+    <string name="about">About</string>
+    <string name="switchButtonsText">Notifications (once per day) off/on</string>
+
+    <string name="api_key">xA1AV7KgJwyNgWzuMTgJg5Kfto6xAB7T</string>
+</resources>
