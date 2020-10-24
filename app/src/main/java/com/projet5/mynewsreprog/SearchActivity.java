@@ -1,4 +1,4 @@
-package com.projet5.mynewsreprog.ApiSearch;
+package com.projet5.mynewsreprog;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -19,10 +19,9 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import com.projet5.mynewsreprog.R;
+import com.projet5.mynewsreprog.ApiSearch.SearchListActivity;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -146,7 +145,6 @@ public class SearchActivity extends AppCompatActivity {
                 });
             }
         });
-
     }
 
     /**

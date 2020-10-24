@@ -1,6 +1,5 @@
 package com.projet5.mynewsreprog.ApiTopStories;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -14,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.projet5.mynewsreprog.R;
-import com.projet5.mynewsreprog.WebView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +20,7 @@ import java.util.List;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.observers.DisposableObserver;
 
-import static com.projet5.mynewsreprog.ApiMostViewed.NytStreams.streamTopStories;
+import static com.projet5.mynewsreprog.NytStreams.streamTopStories;
 
 
 /**

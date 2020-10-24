@@ -14,7 +14,6 @@ import androidx.work.WorkManager;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -22,12 +21,8 @@ import android.view.MenuItem;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
-import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
-
-import com.projet5.mynewsreprog.ApiMostViewed.Result;
-import com.projet5.mynewsreprog.ApiSearch.SearchActivity;
 
 /**
  * @author Yacine

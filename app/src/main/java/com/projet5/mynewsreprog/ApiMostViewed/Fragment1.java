@@ -13,16 +13,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.bumptech.glide.RequestManager;
+import com.projet5.mynewsreprog.ApiBusiness.BusinessApi;
+import com.projet5.mynewsreprog.ApiSearch.SearchApi;
+import com.projet5.mynewsreprog.ApiTopStories.ApiTopStories;
 import com.projet5.mynewsreprog.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import io.reactivex.Observable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.observers.DisposableObserver;
+import retrofit2.http.GET;
+import retrofit2.http.Query;
 
-import static com.projet5.mynewsreprog.ApiMostViewed.NytStreams.stream;
+import static com.projet5.mynewsreprog.NytStreams.stream;
 
 
 /**
@@ -122,5 +127,31 @@ public class Fragment1 extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         this.disposeWhenDestroy();
+    }
+
+    /**
+     * Interface class to get the http link of a API.
+     */
+    public interface NytServices {
+
+        @GET("svc/mostpopular/v2/viewed/1.json?api-key=xA1AV7KgJwyNgWzuMTgJg5Kfto6xAB7T")
+        Observable<NytApi> getMostPopular();
+
+        @GET("svc/topstories/v2/world.json?api-key=xA1AV7KgJwyNgWzuMTgJg5Kfto6xAB7T")
+        Observable<ApiTopStories> getTopStories();
+
+        @GET("svc/topstories/v2/business.json?api-key=xA1AV7KgJwyNgWzuMTgJg5Kfto6xAB7T")
+        Observable<BusinessApi> getBusiness();
+
+        @GET("svc/search/v2/articlesearch.json?api-key=xA1AV7KgJwyNgWzuMTgJg5Kfto6xAB7T")
+        Observable<SearchApi> getSearch(@Query("q") String query,
+                                        @Query("fq") String filter,
+                                        @Query("begin_date") String begin_date,
+                                        @Query("end_date") String end_date);
+
+        @GET("svc/search/v2/articlesearch.json?api-key=xA1AV7KgJwyNgWzuMTgJg5Kfto6xAB7T")
+        Observable<SearchApi> getNotification(@Query("q") String query,
+                                              @Query("fq") String filter,
+                                              @Query("begin_date") String beginDate);
     }
 }

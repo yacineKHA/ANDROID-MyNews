@@ -16,7 +16,7 @@ import com.projet5.mynewsreprog.R;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.projet5.mynewsreprog.ApiMostViewed.NytStreams;
+import com.projet5.mynewsreprog.NytStreams;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.observers.DisposableObserver;
 
@@ -86,12 +86,7 @@ public class Fragment3 extends Fragment {
      */
     private void setSwipeRefreshLayout(){
 
-        this.swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                executeHttpRequest();
-            }
-        });
+        this.swipeRefreshLayout.setOnRefreshListener(this::executeHttpRequest);
     }
 
     /**

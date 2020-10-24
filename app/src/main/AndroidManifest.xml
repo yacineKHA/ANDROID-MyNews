@@ -19,7 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.projet5.mynewsreprog.ApiSearch.SearchActivity" />
+        <activity android:name="com.projet5.mynewsreprog.SearchActivity" />
         <activity android:name="com.projet5.mynewsreprog.ApiSearch.SearchListActivity" />
         <activity android:name=".WebView" />
         <activity android:name=".NotificationActivity" />

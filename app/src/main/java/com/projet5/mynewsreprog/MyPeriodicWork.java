@@ -1,5 +1,6 @@
 package com.projet5.mynewsreprog;
 
+import android.annotation.SuppressLint;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
@@ -11,8 +12,6 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
-
-import com.projet5.mynewsreprog.ApiMostViewed.NytStreams;
 
 import com.projet5.mynewsreprog.ApiSearch.SearchApi;
 
@@ -33,6 +32,7 @@ import static androidx.core.content.ContextCompat.getSystemService;
 public class MyPeriodicWork extends Worker {
 
     private static final String CHANNEL_ID = "CHANNEL_1";
+    @SuppressLint("SimpleDateFormat")
     private static final DateFormat sdf = new SimpleDateFormat("yyyyMMdd");
     private static final int NOTIFICATION_ID = 0;
     private final Preferences preferences = new Preferences(getApplicationContext());

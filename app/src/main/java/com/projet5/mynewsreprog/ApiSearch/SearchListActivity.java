@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import com.projet5.mynewsreprog.ApiMostViewed.NytStreams;
+import com.projet5.mynewsreprog.NytStreams;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.observers.DisposableObserver;
 
@@ -105,12 +105,7 @@ public class SearchListActivity extends AppCompatActivity {
      */
     private void setSwipeRefreshLayout(){
         swipeRefreshLayout = findViewById(R.id.swipeRefreshSearch);
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                executeHttpRequest();
-            }
-        });
+        swipeRefreshLayout.setOnRefreshListener(this::executeHttpRequest);
     }
 
     /**
