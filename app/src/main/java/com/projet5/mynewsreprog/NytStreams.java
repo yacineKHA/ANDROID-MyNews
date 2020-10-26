@@ -15,9 +15,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 
-/**
- * Class to
- */
 public class NytStreams {
 
     public static Observable<NytApi> stream() {

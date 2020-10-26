@@ -33,7 +33,7 @@ public class ViewHolderBusiness extends RecyclerView.ViewHolder {
     }
 
     /**
-     * @param resultBusiness
+     * @param resultBusiness API.
      * @param context Context of the class.
      */
     public void create(ResultBusiness resultBusiness, Context context) {

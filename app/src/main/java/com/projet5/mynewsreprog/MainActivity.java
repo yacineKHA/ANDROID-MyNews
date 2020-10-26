@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
      * Method to set the periodic work request for notifications.
      */
     private void setWorker() {
-        PeriodicWorkRequest saveRequest = new PeriodicWorkRequest.Builder(MyPeriodicWork.class, 20, TimeUnit.SECONDS).build();
+        PeriodicWorkRequest saveRequest = new PeriodicWorkRequest.Builder(MyPeriodicWork.class, 24, TimeUnit.HOURS).build();
         WorkManager.getInstance(getApplicationContext()).enqueueUniquePeriodicWork("NOTIF", ExistingPeriodicWorkPolicy.KEEP, saveRequest);
     }
 
