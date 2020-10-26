@@ -17,6 +17,6 @@ public class UnitTest {
     public void formatDateIsCorrect() {
 
         FormatDate formatDate = new FormatDate();
-        assertEquals("26/03/2020", formatDate.FormatDate("2020-02-26"));
+        assertEquals("26/02/2020", formatDate.FormatDate("2020-02-26"));
     }
 }
