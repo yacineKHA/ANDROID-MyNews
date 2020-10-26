@@ -27,7 +27,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author Yacine
  * @since 2020
- * Class to set the main activity with the tabLayout, ViewPager and navigationView.
+ * Class to set the main activity with the tabLayout, ViewPager and navigationView..
  */
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
