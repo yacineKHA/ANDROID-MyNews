@@ -1,5 +1,6 @@
 package com.projet5.mynewsreprog;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -21,7 +22,11 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.projet5.mynewsreprog.ApiSearch.SearchListActivity;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -34,6 +39,11 @@ public class SearchActivity extends AppCompatActivity {
     private Calendar cal;
     private String BEGIN_DATE;
     private String END_DATE;
+    private static Date date1, date2;
+    @SuppressLint("SimpleDateFormat")
+    private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
+    private SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+    private CompareDate compareDate = new CompareDate();
     private DatePickerDialog.OnDateSetListener mOnDateSetListener;
     private DatePickerDialog datePickerDialog;
     private CheckBox checkBoxArts, checkBoxBusiness, checkBoxPolitics, checkBoxSports, checkBoxEntrepreneurs, checkBoxTravel;
@@ -54,6 +64,7 @@ public class SearchActivity extends AppCompatActivity {
         button = findViewById(R.id.button);
         setToolbar();
         getSearchTextAndDate();
+
 
         begin_date_select = findViewById(R.id.begin_date_select);
         end_date_select = findViewById(R.id.end_date_select);
@@ -87,6 +98,7 @@ public class SearchActivity extends AppCompatActivity {
                 datePickerDialog.show();
 
                 datePickerDialog.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
+                    @SuppressLint("SetTextI18n")
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
@@ -180,19 +192,29 @@ public class SearchActivity extends AppCompatActivity {
 
             if (BEGIN_DATE != null) {
                 bundle.putString("begin_date", BEGIN_DATE);
+                try {
+                    date1 = simpleDateFormat.parse(BEGIN_DATE);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
 
             if (END_DATE != null) {
                 bundle.putString("end_date", END_DATE);
+                try {
+                    date2 = simpleDateFormat.parse(END_DATE);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
-
-            if (bundle.getString("stringKey") != null && bundle.get("boxKey") != null && bundle.getString("begin_date") != null && bundle.getString("end_date") != null) {
+            if (bundle.getString("stringKey") != null && bundle.get("boxKey") != null && bundle.getString("begin_date") != null && bundle.getString("end_date") != null && compareDate.compareDate(date1, date2)) {
                 Intent intent = new Intent(SearchActivity.this, SearchListActivity.class).putExtra("name", bundle);
                 startActivity(intent);
-            } else {
-                Toast.makeText(SearchActivity.this, "Aucune donnée", Toast.LENGTH_LONG).show();
+            } else if(bundle.getString("begin_date") != null && bundle.getString("end_date") != null && !compareDate.compareDate(date1, date2)) {
+                Toast.makeText(SearchActivity.this, "Begin date doit être inférieure à End date.", Toast.LENGTH_LONG).show();
+            } else{
+                Toast.makeText(SearchActivity.this, "Veuillez remplir tous les champs.", Toast.LENGTH_LONG).show();
             }
-
         });
     }
 
@@ -200,6 +222,7 @@ public class SearchActivity extends AppCompatActivity {
     /**
      * Method to get the checkboxes that are checked to finally be able to retrieve
      * the corresponding Strings.
+     *
      * @param view View to get ID's of the activity
      */
     public void setCheckBoxes(View view) {
@@ -242,7 +265,6 @@ public class SearchActivity extends AppCompatActivity {
 
     @Override
     public boolean onSupportNavigateUp() {
-
         finish();
         return super.onSupportNavigateUp();
     }
