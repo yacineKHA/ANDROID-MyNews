@@ -9,7 +9,7 @@ import java.util.Date;
 import static org.junit.Assert.*;
 
 public class CompareDateTest {
-
+    //
     private CompareDate compareDate = new CompareDate();
     private SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 
