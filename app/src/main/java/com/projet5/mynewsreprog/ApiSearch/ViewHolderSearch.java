@@ -32,7 +32,7 @@ public class ViewHolderSearch extends RecyclerView.ViewHolder {
         FormatDate formatDate = new FormatDate();
         title.setText(docs.getNews_desk());
         abstractText.setText(docs.getLead_paragraph());
-        dateText.setText(formatDate.FormatDate(docs.getPub_date()));
+        dateText.setText(formatDate.formatDate(docs.getPub_date()));
         Glide.with(context).load("https://lh3.googleusercontent.com/proxy/U7zg1hHiST2RgQ4Td-xDSs7ge5jLGeKMCBEnyyGGfkvqdhIYQF06rDZNDp1KfIoW9xfrOEEZaK0eQ9JdS1aJVrn2p7tleFVNMoJ-Fyce5vof6KajAqnll7kSr7Z6ADpl47BO6KO3cjFQYCDzs2pTJ9b8ANW04FSFHfj5kAHbO7ykTWZFPplnjkoNnX2qvyyQxfkX8NqlLZy648LM3uIuLjZZL4qlrWKfF9KC").circleCrop().into(imageView);
     }
 }

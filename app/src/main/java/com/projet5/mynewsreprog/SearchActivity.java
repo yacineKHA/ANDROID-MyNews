@@ -24,7 +24,6 @@ import com.projet5.mynewsreprog.ApiSearch.SearchListActivity;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
@@ -49,7 +48,7 @@ public class SearchActivity extends AppCompatActivity {
     private CheckBox checkBoxArts, checkBoxBusiness, checkBoxPolitics, checkBoxSports, checkBoxEntrepreneurs, checkBoxTravel;
     private String[] checkBoxString = {"arts", "business", "politics", "sports", "entrepreneurs", "travel"};
     private String[] checkboxList = new String[6];
-    private String monthS, dayOfMonthS;
+    private FormatDate formatDate = new FormatDate();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,28 +95,12 @@ public class SearchActivity extends AppCompatActivity {
                 datePickerDialog = new DatePickerDialog(SearchActivity.this, R.style.Theme_MaterialComponents_Dialog_Alert, mOnDateSetListener, year, month, day);
                 Objects.requireNonNull(datePickerDialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.GRAY));
                 datePickerDialog.show();
-
                 datePickerDialog.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
                     @SuppressLint("SetTextI18n")
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-
-                        //Month = month +1 because of the month January that it begins at 0;
-                        month = month + 1;
-
-                        if (month < 10) {
-                            monthS = "0" + month;
-                        } else {
-                            monthS = String.valueOf(month);
-                        }
-                        if (dayOfMonth < 10) {
-                            dayOfMonthS = "0" + dayOfMonth;
-                        } else {
-                            dayOfMonthS = String.valueOf(dayOfMonth);
-                        }
-
-                        begin_date_select.setText(dayOfMonthS + "/" + monthS + "/" + year);
-                        BEGIN_DATE = year + monthS + dayOfMonthS;
+                        begin_date_select.setText(formatDate.toShowInTextView(year, month,dayOfMonth));
+                        BEGIN_DATE = formatDate.toSaveInString(year,month, dayOfMonth);
                         Log.i("begindate", BEGIN_DATE);
                     }
                 });
@@ -131,27 +114,11 @@ public class SearchActivity extends AppCompatActivity {
                 datePickerDialog = new DatePickerDialog(SearchActivity.this, R.style.Theme_MaterialComponents_Dialog_Alert, mOnDateSetListener, year, month, day);
                 Objects.requireNonNull(datePickerDialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.GRAY));
                 datePickerDialog.show();
-
                 datePickerDialog.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-
-                        //Month = month +1 because of the month January that it begins at 0;
-                        month = month + 1;
-
-                        if (month < 10) {
-                            monthS = "0" + month;
-                        } else {
-                            monthS = String.valueOf(month);
-                        }
-                        if (dayOfMonth < 10) {
-                            dayOfMonthS = "0" + dayOfMonth;
-                        } else {
-                            dayOfMonthS = String.valueOf(dayOfMonth);
-                        }
-
-                        end_date_select.setText(dayOfMonthS + "/" + monthS + "/" + year);
-                        END_DATE = year + monthS + dayOfMonthS;
+                        end_date_select.setText(formatDate.toShowInTextView(year, month, dayOfMonth));
+                        END_DATE = formatDate.toSaveInString(year, month, dayOfMonth);
                         Log.i("enddate", END_DATE);
                     }
                 });
@@ -207,10 +174,10 @@ public class SearchActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
-            if (bundle.getString("stringKey") != null && bundle.get("boxKey") != null && bundle.getString("begin_date") != null && bundle.getString("end_date") != null && compareDate.compareDate(date1, date2)) {
+            if (bundle.getString("stringKey") != null && bundle.get("boxKey") != null && bundle.getString("begin_date") != null && bundle.getString("end_date") != null && compareDate.compareDateWithBefore(date1, date2)) {
                 Intent intent = new Intent(SearchActivity.this, SearchListActivity.class).putExtra("name", bundle);
                 startActivity(intent);
-            } else if(bundle.getString("begin_date") != null && bundle.getString("end_date") != null && !compareDate.compareDate(date1, date2)) {
+            } else if(bundle.getString("begin_date") != null && bundle.getString("end_date") != null && !compareDate.compareDateWithBefore(date1, date2)) {
                 Toast.makeText(SearchActivity.this, "Begin date doit être inférieure à End date.", Toast.LENGTH_LONG).show();
             } else{
                 Toast.makeText(SearchActivity.this, "Veuillez remplir tous les champs.", Toast.LENGTH_LONG).show();

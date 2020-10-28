@@ -10,13 +10,24 @@ import static org.junit.Assert.*;
 
 public class CompareDateTest {
 
+    private CompareDate compareDate = new CompareDate();
+    private SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+
     @Test
-    public void compareDate() throws ParseException {
-        CompareDate compareDate = new CompareDate();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+    public void compareDateWithBefore() throws ParseException {
+
         Date date1 = sdf.parse("20200102");
         Date date2 = sdf.parse("20200202");
-        boolean result = compareDate.compareDate(date1,date2);
+        boolean result = compareDate.compareDateWithBefore(date1,date2);
+        assertTrue(result);
+    }
+
+    @Test
+    public void compareDateWithAfter() throws ParseException {
+
+        Date date1 = sdf.parse("20200202");
+        Date date2 = sdf.parse("20200102");
+        boolean result = compareDate.compareDateWithAfter(date1,date2);
         assertTrue(result);
     }
 }

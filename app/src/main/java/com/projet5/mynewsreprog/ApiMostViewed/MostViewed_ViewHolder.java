@@ -28,7 +28,7 @@ public class MostViewed_ViewHolder extends RecyclerView.ViewHolder {
         FormatDate formatDate = new FormatDate();
         title_text.setText(result.getTitle());
         theme_text.setText(result.getSection());
-        date_text.setText(formatDate.FormatDate(result.getPublishedDate()));
+        date_text.setText(formatDate.formatDate(result.getPublishedDate()));
 
         if (result.getMedia().size() > 0 && result.getMedia().get(0).getMediaMetadata().size() > 0 && result.getMedia().get(0).getMediaMetadata().get(0).getUrl() != null) {
             Glide.with(context).load(result.getMedia().get(0).getMediaMetadata().get(0).getUrl()).circleCrop().into(image);

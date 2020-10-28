@@ -17,7 +17,7 @@ public class FormatDate {
      * @param date The string of the date that you need to format.
      * @return Return the formatted date in a String.
      */
-    public String FormatDate( String date) {
+    public String formatDate(String date) {
 
         day = date.charAt(8) + Character.toString(date.charAt(9));
         month = date.charAt(5) + Character.toString(date.charAt(6));
@@ -25,4 +25,46 @@ public class FormatDate {
         String dateFormat = day + "/" + month +"/" + year;
         return dateFormat;
     }
+
+    protected String toShowInTextView(int year, int month, int dayOfMonth){
+        //Month = month +1 because of the month January that it begins at 0;
+        month = month + 1;
+
+        String monthS;
+        if (month < 10) {
+            monthS = "0" + month;
+        } else {
+            monthS = String.valueOf(month);
+        }
+        String dayOfMonthS;
+        if (dayOfMonth < 10) {
+            dayOfMonthS = "0" + dayOfMonth;
+        } else {
+            dayOfMonthS = String.valueOf(dayOfMonth);
+        }
+
+        return dayOfMonthS + "/" + monthS + "/" + year;
+    }
+
+    protected String toSaveInString(int year, int month, int dayOfMonth){
+        //Month = month +1 because of the month January that it begins at 0;
+        month = month + 1;
+
+        String monthS;
+        if (month < 10) {
+            monthS = "0" + month;
+        } else {
+            monthS = String.valueOf(month);
+        }
+        String dayOfMonthS;
+        if (dayOfMonth < 10) {
+            dayOfMonthS = "0" + dayOfMonth;
+        } else {
+            dayOfMonthS = String.valueOf(dayOfMonth);
+        }
+
+        return year + monthS + dayOfMonthS ;
+    }
+
+
 }

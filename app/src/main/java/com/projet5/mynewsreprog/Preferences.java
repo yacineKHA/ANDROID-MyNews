@@ -12,7 +12,7 @@ import static android.content.Context.MODE_PRIVATE;
  */
 public class Preferences {
 
-    private SharedPreferences mPref;
+    protected SharedPreferences mPref;
 
     public Preferences(Context context) {
         mPref = context.getSharedPreferences("preferences", MODE_PRIVATE);

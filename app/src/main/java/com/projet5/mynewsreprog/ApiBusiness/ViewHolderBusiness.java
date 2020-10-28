@@ -37,10 +37,10 @@ public class ViewHolderBusiness extends RecyclerView.ViewHolder {
      * @param context Context of the class.
      */
     public void create(ResultBusiness resultBusiness, Context context) {
-        FormatDate formatDate = new FormatDate();
+        FormatDate format = new FormatDate();
         title_text.setText(resultBusiness.getTitle());
         theme_text.setText(resultBusiness.getSection());
-        date_text.setText(formatDate.FormatDate(resultBusiness.getPublished_date()));
+        date_text.setText(format.formatDate(resultBusiness.getPublished_date()));
 
         if (resultBusiness.getMultimedia() != null && resultBusiness.getMultimedia().size() > 0 && resultBusiness.getMultimedia().get(0) != null && resultBusiness.getMultimedia().get(0).getUrl() != null){
             Glide.with(context).load(resultBusiness.getMultimedia().get(0).getUrl()).circleCrop().into(imageView);

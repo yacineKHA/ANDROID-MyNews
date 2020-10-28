@@ -10,7 +10,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 /**
- * Interface class to get the http link of a API.
+ * Interface class to get the http link of the API.
  */
 public interface NytServices {
 

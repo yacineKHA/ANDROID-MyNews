@@ -34,7 +34,7 @@ public class ViewHolderTopStories extends RecyclerView.ViewHolder {
         FormatDate formatDate = new FormatDate();
         title_text.setText(results.getTitle());
         theme_text.setText(results.getSection());
-        date_text.setText(formatDate.FormatDate(results.getPublished_date()));
+        date_text.setText(formatDate.formatDate(results.getPublished_date()));
 
         if (results.getMultimedia() != null && results.getMultimedia().get(0) != null && results.getMultimedia().get(0).getUrl() != null ){
 
